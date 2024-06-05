@@ -8,7 +8,7 @@ function App() {
 
   const validate=()=>{
     let val= document.getElementById("html")
-    console.log(val.value)
+    
     if(val.value===""){
       alert("Enter an HTMl Value")
       return false
@@ -17,7 +17,7 @@ function App() {
   }
 
   const parseHTML=(parent,child)=>{
-    console.log("Hello")
+  
     let domString=""
     for(let i=0;i<child.length;i++){
       let varName=getClassName(child[i].tagName)
@@ -41,7 +41,7 @@ function App() {
   }
 
   const getClassName=(tagname)=>{
-    console.log(tags)
+
     if(tags[tagname]!==undefined){
       tags[tagname]+=1 
       return `${tagname+tags[tagname]}`
@@ -60,16 +60,14 @@ function App() {
       let domString=""
       
       parentDiv.innerHTML=document.getElementById("html").value
-      console.log(parentDiv)
+      
       let child=parentDiv.children
       for(let i=0;i<child.length;i++){
         let varName=getClassName(child[i].tagName)
         domString+=`let ${varName.toLowerCase()}=document.createElement("${child[i].tagName.toLowerCase()}") \n`
         for (let j = 0; j<child[i].attributes.length; j++){
           domString+=`${varName.toLowerCase()}.setAttribute("${child[i].attributes[j].name}","${child[i].attributes[j].value}")\n`
-         
         }
-
         if(child[i].childNodes[0] && child[i].childNodes[0].nodeValue!==null && child[i].childNodes[0].nodeValue.trim()!==""){
           domString+=`${varName.toLowerCase()}.innerText="${child[i].childNodes[0].nodeValue.trim()}"\n`
         }
@@ -85,8 +83,7 @@ function App() {
     }
     else{}
   }
-
-
+  
   return (
     <div className="App">
      <div className="navbar">
